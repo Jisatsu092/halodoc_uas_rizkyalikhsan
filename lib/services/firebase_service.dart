@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
-import '../firebase_config.dart';
+import '../firebase/firebase_config.dart';
 
 class FirebaseService {
   static Future<void> initialize() async {
@@ -22,11 +22,6 @@ class FirebaseService {
   final CollectionReference _produkAndalan = 
     FirebaseFirestore.instance.collection('produk_andalan');
 
-  Stream<QuerySnapshot> getSehatTanpaDrama() {
-    return _sehatDrama.snapshots();
-  }
-
-  Stream<QuerySnapshot> getProdukAndalan() {
-    return _produkAndalan.snapshots();
-  }
+  Stream<QuerySnapshot> getSehatTanpaDrama() => _sehatDrama.snapshots();
+  Stream<QuerySnapshot> getProdukAndalan() => _produkAndalan.snapshots();
 }

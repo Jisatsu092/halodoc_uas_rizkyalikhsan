@@ -8,25 +8,42 @@ class SehatDramaChip extends StatelessWidget {
   const SehatDramaChip({
     super.key,
     required this.text,
-    this.backgroundColor = const Color(0xFFF44336),
-    this.imagePath = 'assets/placeholder.png',
+    this.backgroundColor = const Color(0xFFD32F2F),
+    this.imagePath = 'assets/images/placeholder.svg',
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(right: 10),
-      child: Chip(
-        avatar: CircleAvatar(
-          backgroundImage: AssetImage(imagePath),
-          backgroundColor: Colors.white,
+      margin: const EdgeInsets.only(right: 8),
+      decoration: BoxDecoration(
+        color: backgroundColor,
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Image.asset(
+              imagePath,
+              width: 24,
+              height: 24,
+              errorBuilder:
+                  (_, __, ___) =>
+                      Icon(Icons.image, size: 24, color: Colors.white),
+            ),
+            const SizedBox(width: 8),
+            Text(
+              text,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 12,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ],
         ),
-        label: Text(
-          text,
-          style: const TextStyle(color: Colors.white),
-        ),
-        backgroundColor: backgroundColor,
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       ),
     );
   }
